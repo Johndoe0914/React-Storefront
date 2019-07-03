@@ -1,0 +1,16 @@
+nav.navbar.navbar-default {
+  margin-bottom: 0;
+}
+
+nav {
+  background-color: black;
+  box-shadow: 0 3px 6px black, 0 3px 6px black;
+}
+
+.nav-item {
+  position: relative;
+  display: inline-block;
+  left: 700px;
+  padding: 10px;
+  font-size: 20px;
+}

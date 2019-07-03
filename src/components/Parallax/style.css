@@ -1,0 +1,19 @@
+.parallaxContainer {
+  background-image: url("https://d3qvqlc701gzhm.cloudfront.net/thumbs/6a9ad604e660831fbbaa313323561ea96cbc019e058c0ede29a84e55f59ffe31-375.jpg");
+  /* Set a specific height */
+  height: 200px;
+  width: auto;
+  /* Create the parallax scrolling effect */
+  /* background-attachment: fixed; */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 3px 6px darkslategrey, 0 3px 6px darkslategrey;
+}
+
+@media only screen and (min-width: 992px) {
+  .parallaxContainer {
+    height: 500px;
+  }
+}
