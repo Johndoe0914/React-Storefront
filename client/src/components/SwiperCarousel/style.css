@@ -1,0 +1,41 @@
+.card {
+  background: #fff;
+  border-radius: 2px;
+  height: auto;
+  margin: 10px;
+  position: relative;
+  width: 175px;
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  text-align: left;
+  display: inline-flex;
+  margin-bottom: 50px;
+}
+
+.card > .img-container {
+  height: 60%;
+
+  text-align: center;
+  background: black;
+}
+.card > .img-container > img {
+  width: 60%;
+}
+
+.card > .content {
+  padding-left: 0%;
+  padding-right: 1rem;
+  font-size: 15px;
+}
+
+.card > .content > ul {
+  list-style-type: none;
+}
+
+.card > .content > ul > li {
+  margin-top: 18px;
+}
+.profileImageShowCase {
+  position: relative;
+  width: 100%;
+  padding: 100px 20px 10px;
+}

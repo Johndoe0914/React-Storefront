@@ -1,10 +1,14 @@
 import React from "react";
 import "./style.css";
+import { Container, Row, Col } from "../Grid/index";
 import { Link } from "react-router-dom";
 
 function Parallax() {
   return (
-    <div className="parallaxContainer" style={{ overflowX: "hidden" }}>
+    <div
+      className="parallaxContainer"
+      style={{ overflowX: "hidden", overflowY: "hidden" }}
+    >
       <div className="links">
         <ul
           className="navbar-nav"
@@ -35,9 +39,9 @@ function Parallax() {
                   ? "nav-link active"
                   : "nav-link"
               }
-              style={{ color: "black" }}
+              style={{ color: "black", fontStyle: "italic" }}
             >
-              LukeWarm
+              Ice Box
             </Link>
           </li>
 
@@ -56,6 +60,14 @@ function Parallax() {
           </li>
         </ul>
       </div>
+      <center>
+        <div className="Welcome">
+          <h1 style={{ color: "red", margin: "auto" }}>Welcome to ICEBOX</h1>
+          <h1 style={{ color: "red", margin: "auto" }}>
+            Here for all your jewlary needs
+          </h1>
+        </div>
+      </center>
     </div>
   );
 }
