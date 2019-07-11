@@ -41,6 +41,18 @@ function Navbar() {
               Shop
             </Link>
           </li>
+          <li className="nav-item">
+            <Link
+              to="/cart"
+              className={
+                window.location.pathname === "/cart"
+                  ? "nav-link active"
+                  : "nav-link"
+              }
+            >
+              Cart(0)
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

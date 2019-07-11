@@ -8,14 +8,15 @@ import Singleproduct from "./pages/Singleproduct";
 import Checkout from "./pages/Checkout";
 import Orderconfirmation from "./pages/Orderconfirmation";
 import Nomatch from "./pages/NoMatch";
+import Footer from "./components/Footer/index";
 
 export default class App extends Component {
   render() {
     return (
       <Router>
+        <Navbar />
         <Switch>
           <Route exact path="/" component={Homepage} />
-          <Navbar />
 
           <Route exact path="/shop" component={Shop} />
           <Route exact path="/cart" component={Cart} />
@@ -28,6 +29,7 @@ export default class App extends Component {
           />
           <Route exact path="*" component={Nomatch} />
         </Switch>
+        <Footer />
       </Router>
     );
   }

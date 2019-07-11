@@ -1,3 +1,18 @@
 .bestSellerImages {
   box-shadow: 0 3px 6px black, 0 3px 6px black;
 }
+.trendingProducts {
+  position: relative;
+  width: 650px;
+  height: 375px;
+  margin: auto;
+  margin-bottom: 100px;
+  background-color: transparent;
+  box-shadow: 0 3px 6px darkslategray, 0 3px 6px darkslategray;
+}
+
+.productDisplay {
+  position: relative;
+  width: 650;
+  height: 375;
+}

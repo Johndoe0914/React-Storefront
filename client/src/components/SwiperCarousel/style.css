@@ -39,3 +39,9 @@
   width: 100%;
   padding: 100px 20px 10px;
 }
+.swiperCarousel {
+  position: relative;
+  width: 1000px;
+  height: 375px;
+  margin: auto;
+}

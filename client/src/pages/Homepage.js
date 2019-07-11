@@ -3,16 +3,17 @@ import Parallax from "../components/Parallax/index";
 import { Container, Row, Col } from "../components/Grid/index";
 import SwiperCarousel from "../components/SwiperCarousel/index";
 import "./Homepage.css";
+import product from "../nodeJS.json";
 
 export default class Homepage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC1WAPAnbJ_izw1gFzLV1FsloWvJZzYRkPVTIar8LNq7p-3vbrZw"
+      productList: product
     };
   }
+
   render() {
     return (
       <Container fluid>
@@ -28,9 +29,15 @@ export default class Homepage extends Component {
           <h3 style={{ color: "white" }}>Trending Items</h3>
         </center>
         <hr />
-        <div className="bestSellerImages" style={{ overflowX: "hidden" }}>
+        <div className="" style={{ overflowX: "hidden" }}>
           <Row>
-            <Col size="12">{/* <SwiperCarousel /> */}</Col>
+            <Col size="12">
+              <div className="trendingProducts">
+                <div className="productDisplay">
+                  <SwiperCarousel productlist={this.state.productList} />
+                </div>
+              </div>
+            </Col>
           </Row>
         </div>
         <hr />
