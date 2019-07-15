@@ -1,17 +1,30 @@
 import React, { Component } from "react";
 import Parallax from "../components/Parallax/index";
 import { Container, Row, Col } from "../components/Grid/index";
+import axios from "axios";
+import Moltin from "moltin";
 import SwiperCarousel from "../components/SwiperCarousel/index";
 import "./Homepage.css";
-import product from "../nodeJS.json";
 
 export default class Homepage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      productList: product
+      productList: {}
     };
+  }
+
+  componentWillMount() {
+    console.log("componentwilMount");
+    axios
+      .get("/v2/products")
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -34,7 +47,7 @@ export default class Homepage extends Component {
             <Col size="12">
               <div className="trendingProducts">
                 <div className="productDisplay">
-                  <SwiperCarousel productlist={this.state.productList} />
+                  {/* <SwiperCarousel productlist={this.state.productList} /> */}
                 </div>
               </div>
             </Col>
