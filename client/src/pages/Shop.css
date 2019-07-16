@@ -1,13 +1,16 @@
-.ProductWrapper {
+.productdisplay {
   position: relative;
   width: 900px;
   height: 700px;
   background-color: grey;
   margin: auto;
-  margin-top: 200px;
+  margin-top: 75px;
   box-shadow: 0 3px 6px darkslategrey, 0 3px 6px darkslategrey;
+  margin-bottom: 100px;
 }
-
+.product {
+  display: inline-block;
+}
 .productCategory {
   position: relative;
   text-align: center;

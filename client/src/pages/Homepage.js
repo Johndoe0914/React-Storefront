@@ -42,7 +42,7 @@ export default class Homepage extends Component {
           <h3 style={{ color: "white" }}>Trending Items</h3>
         </center>
         <hr />
-        <div className="" style={{ overflowX: "hidden" }}>
+        <div className="" style={{ overflowX: "hidden" , overflowY: "hidden"}}>
           <Row>
             <Col size="12">
               <div className="trendingProducts">

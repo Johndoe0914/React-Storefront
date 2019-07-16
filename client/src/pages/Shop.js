@@ -9,11 +9,52 @@ export default class Shop extends Component {
     super(props);
 
     this.state = {
-      products: {
-        image:
-          "https://cdn.shopify.com/s/files/1/1293/3059/products/shopping_9a4d78de-a960-455e-b6d3-c65d976cc3f7_300x300.jpg?v=1488077708"
-      },
-      category: "golf"
+      products: [
+        {
+          Name: "Cheese",
+          Price: 2.5,
+          Location: "Refrigerated foods",
+          Image:
+            "https://www.bubblesoflaguna.com/thumbnail/ikea-kitchen-wall-lamps-100-ikea-musik-wall-lamp-previous-ikea-musik-wall-lamp-hd_1_15872-10.jpg"
+        },
+        {
+          Name: "Crisps",
+          Price: 3,
+          Location: "the Snack isle",
+          Image:
+            "https://www.bubblesoflaguna.com/thumbnail/ikea-kitchen-wall-lamps-100-ikea-musik-wall-lamp-previous-ikea-musik-wall-lamp-hd_1_15872-10.jpg"
+        },
+        {
+          Name: "Pizza",
+          Price: 4,
+          Location: "Refrigerated foods",
+          Image:
+            "https://www.bubblesoflaguna.com/thumbnail/ikea-kitchen-wall-lamps-100-ikea-musik-wall-lamp-previous-ikea-musik-wall-lamp-hd_1_15872-10.jpg"
+        },
+        {
+          Name: "Chocolate",
+          Price: 1.5,
+          Location: "the Snack isle",
+          Image:
+            "https://www.bubblesoflaguna.com/thumbnail/ikea-kitchen-wall-lamps-100-ikea-musik-wall-lamp-previous-ikea-musik-wall-lamp-hd_1_15872-10.jpg"
+        },
+        {
+          Name: "Self-raising flour",
+          Price: 1.5,
+          Location: "Home baking",
+          Image:
+            "https://www.bubblesoflaguna.com/thumbnail/ikea-kitchen-wall-lamps-100-ikea-musik-wall-lamp-previous-ikea-musik-wall-lamp-hd_1_15872-10.jpg"
+        },
+        {
+          Name: "Ground almonds",
+          Price: 3,
+          Location: "Home baking",
+          Image:
+            "https://www.bubblesoflaguna.com/thumbnail/ikea-kitchen-wall-lamps-100-ikea-musik-wall-lamp-previous-ikea-musik-wall-lamp-hd_1_15872-10.jpg"
+        }
+      ],
+
+      hover: false
     };
   }
 
@@ -26,6 +67,7 @@ export default class Shop extends Component {
   //     });
   //   });
   // }
+
   render() {
     return (
       <div className="wrappingContainer">
@@ -37,16 +79,25 @@ export default class Shop extends Component {
               alt="jok/>"
             />
           </div>
-          <div className="productDisplay">
+          <div className="productdisplay">
             <Row>
               <Col size="12">
-                {/* Add product card component */}
-
                 <div className="ProductWrapper">
-                  <Card productimage="https://cdn.shopify.com/s/files/1/1293/3059/products/shopping_9a4d78de-a960-455e-b6d3-c65d976cc3f7_300x300.jpg?v=1488077708" />
-                  <Card productimage="https://cdn.shopify.com/s/files/1/1293/3059/products/shopping_9a4d78de-a960-455e-b6d3-c65d976cc3f7_300x300.jpg?v=1488077708" />
-                  <Card productimage="https://cdn.shopify.com/s/files/1/1293/3059/products/shopping_9a4d78de-a960-455e-b6d3-c65d976cc3f7_300x300.jpg?v=1488077708" />
-                  <Card productimage="https://cdn.shopify.com/s/files/1/1293/3059/products/shopping_9a4d78de-a960-455e-b6d3-c65d976cc3f7_300x300.jpg?v=1488077708" />
+                  <span className="products">
+                    {this.state.products.length < 0
+                      ? null
+                      : this.state.products.map(product => (
+                          <div className="product">
+                            <Card
+                              onMouseEnter={this.props.handleMouseEnter}
+                              onMouseLeave={this.props.handleMouseLeave}
+                              productImage={product.Image}
+                              productPrice={product.Price}
+                              productName={product.Name}
+                            />
+                          </div>
+                        ))}
+                  </span>
                 </div>
               </Col>
             </Row>
