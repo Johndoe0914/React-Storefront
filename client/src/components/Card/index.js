@@ -23,9 +23,9 @@ export default class card extends Component {
         style={{
           position: "relative",
           backgroundImage: `url(${this.props.productImage})`,
-          width: "200px",
-          height: "190px",
-          padding: "30px"
+          width: "270px",
+          height: "220px",
+          alignItems: "center"
         }}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}

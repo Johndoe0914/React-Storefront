@@ -1,11 +1,9 @@
 .productdisplay {
   position: relative;
   width: 900px;
-  height: 700px;
-  background-color: grey;
+  height: auto;
   margin: auto;
-  margin-top: 75px;
-  box-shadow: 0 3px 6px darkslategrey, 0 3px 6px darkslategrey;
+  /* box-shadow: 0 3px 6px darkslategrey, 0 3px 6px darkslategrey; */
   margin-bottom: 100px;
 }
 .product {

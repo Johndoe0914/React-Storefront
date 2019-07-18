@@ -23,10 +23,14 @@ function Parallax() {
         >
           Welcome to LukeWarm
         </h1>
-        <h1 style={{ color: "white", margin: "auto" }}>
-          Looking to stay warm look no further!
-        </h1>
-
+        <div>
+          <p className="static-text">Do you want to</p>
+          <ul className="dynamic-text">
+            <li className="item">look your best</li>
+            <li className="item">feel your best</li>
+            <li className="item">attract the ladies</li>
+          </ul>
+        </div>
         <Button
           href="/shop"
           style={{

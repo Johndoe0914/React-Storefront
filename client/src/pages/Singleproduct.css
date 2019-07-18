@@ -1,0 +1,30 @@
+.singleProductDisplay {
+  position: relative;
+  height: 500px;
+  width: 800px;
+  /* background-color: green; */
+  margin: auto;
+  margin-top: 100px;
+  overflow-x: hidden;
+}
+
+.productInfo {
+  position: relative;
+  color: white;
+}
+.productDescription {
+  font-weight: bold;
+}
+.productprice {
+  display: inline;
+}
+.productImage {
+    box-shadow: 0 3px 6px darkslategrey, 0 3px 6px darkslategrey;
+}
+
+.similarProducts {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-color: grey;
+}

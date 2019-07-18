@@ -73,11 +73,9 @@ export default class Shop extends Component {
       <div className="wrappingContainer">
         <Container>
           <div className="productCategory">
-            <h2>{this.state.category}</h2>
-            <img
-              src="https://www.bubblesoflaguna.com/thumbnail/ikea-kitchen-wall-lamps-100-ikea-musik-wall-lamp-previous-ikea-musik-wall-lamp-hd_1_15872-10.jpg"
-              alt="jok/>"
-            />
+            <h2>
+              "Searching to feel your best you've come go the right place"
+            </h2>
           </div>
           <div className="productdisplay">
             <Row>

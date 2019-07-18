@@ -10,11 +10,62 @@
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 0 3px 6px black, 0 3px 6px black;
-  text-decoration-style: ;
 }
 
 @media only screen and (min-width: 992px) {
   .parallaxContainer {
     height: 500px;
+  }
+}
+.dynamic-text,
+.static-text {
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  font-size: large;
+}
+.dynamic-text {
+  list-style: none;
+  position: absolute;
+  overflow: hidden;
+}
+
+.item {
+  position: relative;
+  top: 0;
+  animation: move 5s infinite 1s;
+
+  &:first-child {
+    color: #01baef;
+  }
+  &:nth-child(2) {
+    color: #f79256;
+  }
+  &:nth-child(3) {
+    color: #0fa3b1;
+  }
+  &:nth-child(4) {
+    color: #fe5f55;
+  }
+  &:nth-child(5) {
+    color: #b0db43;
+  }
+}
+
+@keyframes move {
+  0% {
+    top: 0px;
+  }
+  20% {
+    top: -50px;
+  }
+  40% {
+    top: -96px;
+  }
+  60% {
+    top: -146px;
+  }
+  80% {
+    top: -196px;
   }
 }
