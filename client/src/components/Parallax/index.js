@@ -1,7 +1,5 @@
 import React from "react";
 import "./style.css";
-import { Container, Row, Col } from "../Grid/index";
-import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 function Parallax() {

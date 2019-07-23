@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "../components/Grid/index";
 import "./Singleproduct.css";
+import axios from "axios";
 import Button from "react-bootstrap/Button";
 
 export default class Singleproduct extends Component {
+
+  componentDidMount(){
+    axios.get("/v2/products/" + )
+  }
   render() {
     return (
       <Container fluid>

@@ -18,27 +18,10 @@
   background: black;
 }
 .card > .img-container > img {
-  width: 60%;
-}
-
-.card > .content {
-  padding-left: 0%;
-  padding-right: 1rem;
-  font-size: 15px;
-}
-
-.card > .content > ul {
-  list-style-type: none;
-}
-
-.card > .content > ul > li {
-  margin-top: 18px;
-}
-.profileImageShowCase {
-  position: relative;
   width: 100%;
-  padding: 100px 20px 10px;
+  height: 99%;
 }
+
 .swiperCarousel {
   position: relative;
   width: 1000px;

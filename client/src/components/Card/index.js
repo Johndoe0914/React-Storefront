@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, CardGroup } from "react-bootstrap";
+import "./style.css";
 
 export default class card extends Component {
   constructor(props) {
@@ -18,22 +18,16 @@ export default class card extends Component {
   };
   render() {
     return (
-      <div
-        className="card"
-        style={{
-          position: "relative",
-          backgroundImage: `url(${this.props.productImage})`,
-          width: "270px",
-          height: "220px",
-          alignItems: "center"
-        }}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-      >
+      <div onClick={this.props.onClick} className="card">
+        <div className="img-container">
+          <img src={this.props.productImage} alt="product" />
+        </div>
+
         <div className="productInfo">
-          <h3>
-            {this.props.productName}, {this.props.productPrice}
-          </h3>
+          <p>
+            {this.props.productName}
+            <br />${this.props.productPrice}
+          </p>
         </div>
       </div>
     );

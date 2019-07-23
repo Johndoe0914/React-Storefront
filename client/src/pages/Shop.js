@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "../components/Grid/index";
 import Card from "../components/Card/index";
+import { Redirect } from "react-router-dom";
 import "./Shop.css";
 import axios from "axios";
 
@@ -9,6 +10,8 @@ export default class Shop extends Component {
     super(props);
 
     this.state = {
+      realProducts: [{}],
+
       products: [
         {
           Name: "Cheese",
@@ -58,44 +61,49 @@ export default class Shop extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   axios.get("/moltin", (req, res) => {
-  //     let { Moltin } = req;
-  //     Moltin.Products.All().then(prods => {
-  //       console.log(prods);
-  //       this.setState({ products: prods });
-  //     });
-  //   });
-  // }
+  componentDidMount() {
+    axios
+      .get("/v2/products")
+      .then(res => {
+        let data = res.data.data;
+        this.setState({ realProducts: data });
+        console.log(this.state.realProducts);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   render() {
     return (
       <div className="wrappingContainer">
         <Container>
           <div className="productCategory">
-            <h2>
-              "Searching to feel your best you've come go the right place"
-            </h2>
+            <h2>All products</h2>
           </div>
           <div className="productdisplay">
             <Row>
               <Col size="12">
                 <div className="ProductWrapper">
-                  <span className="products">
-                    {this.state.products.length < 0
+                  <div className="products">
+                    {this.state.realProducts.length < 0
                       ? null
-                      : this.state.products.map(product => (
-                          <div className="product">
-                            <Card
-                              onMouseEnter={this.props.handleMouseEnter}
-                              onMouseLeave={this.props.handleMouseLeave}
-                              productImage={product.Image}
-                              productPrice={product.Price}
-                              productName={product.Name}
-                            />
-                          </div>
-                        ))}
-                  </span>
+                      : Object.keys(this.state.realProducts).map(
+                          (value, product) => (
+                            <div key={product.id} className="product">
+                              <Card
+                                onClick={() => (
+                                  <Redirect to={"/product/" + product.id} />
+                                )}
+                                key={product.id}
+                                productImage={product.image}
+                                // productPrice={product[value].price}
+                                productName={product.name}
+                              />
+                            </div>
+                          )
+                        )}
+                  </div>
                 </div>
               </Col>
             </Row>

@@ -1,7 +1,15 @@
 .card {
   position: relative;
+  width: 270px;
+  height: 250px;
+  justify-content: space-between;
+  background-color: transparent;
 }
-
+.img-container {
+  position: relative;
+  width: 100% !important;
+  height: 100% !important;
+}
 .card:hover {
   cursor: pointer;
 }

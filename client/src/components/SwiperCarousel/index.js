@@ -37,7 +37,7 @@ const params = {
   effect: "coverflow",
   grabCursor: true,
   centeredSlides: true,
-  slidesPerView: "3",
+  slidesPerView: "1",
 
   pagination: {
     el: ".swiper-pagination"
@@ -70,17 +70,15 @@ export default class SwiperCarousel extends Component {
         />
         <div className="swiperCarousel">
           <Swiper {...params}>
-            {this.props.productlist.map(product => (
-              <div className="productContainer">
-                <div className="productImage">
-                  <img src={product.projectImage} alt="hello" />
+            <div className="productContainer">
+              {this.props.productlist.map(product => (
+                <div className="productinfo">
+                 <div className="img-container">
+                 <img src={product.productImage} alt="hello" />
+                 </div>
                 </div>
-
-                <div className="overlay" style={{}}>
-                  <h3>{product.productPrice}</h3>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </Swiper>
         </div>
       </Row>
