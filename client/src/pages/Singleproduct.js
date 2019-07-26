@@ -52,18 +52,24 @@ export default class Singleproduct extends Component {
             <Col size="6">
               <div className="productInfo">
                 <div className="productName">
-                  <h2>{this.state.productName}</h2>
+                  {this.state.productName ? (
+                    <h2>{this.state.productName}</h2>
+                  ) : null}
                 </div>
                 <div className="productDescription">
-                  <p>{this.state.productDescription}</p>
+                  {this.state.productDescription ? (
+                    <p>{this.state.productDescription}</p>
+                  ) : null}
                 </div>
                 <div className="stock">
-                  <p>in Stock:</p>
-                  {this.state.productStock ? <p>Yes</p> : <p>No</p>}
+                  {this.state.productStock ? <p>in Stock:</p> : null}
+                  {this.state.productStock ? <p>Yes</p> : null}
                 </div>
 
                 <div className="productPrice">
-                  <h4>USD: {this.state.productPrice} </h4>
+                  {this.state.productPrice ? (
+                    <h4>USD: {this.state.productPrice} </h4>
+                  ) : null}
                 </div>
               </div>
               <hr />
