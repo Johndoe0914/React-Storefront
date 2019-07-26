@@ -18,7 +18,7 @@ export default class card extends Component {
   };
   render() {
     return (
-      <div onClick={this.props.onClick} className="card">
+      <div className="card">
         <div className="img-container">
           <img src={this.props.productImage} alt="product" />
         </div>

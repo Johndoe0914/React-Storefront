@@ -1,5 +1,4 @@
 const express = require("express");
-const moltin = require("moltin");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -9,14 +8,18 @@ app.use(
     extended: false
   })
 );
+const MoltinGateway = require("@moltin/sdk").gateway;
 
-let client_id = "S0xpD0ORVe1ZXgwfXIENg3Max12bI6EwLhpRIKCyfK";
+// const Moltin = MoltinGateway({
+//   client_id: "S0xpD0ORVe1ZXgwfXIENg3Max12bI6EwLhpRIKCyfK",
+//   client_secret: "qpFZui08ykS5nH1EhcZql8Ok8u5pQkLWcMFa5ChIGb"
+// });
 
 /*------------Middleware---------------*/
 // same gateway && authentication.. just wrapped in a function
 const authenticateMoltin = (req, res, next) => {
-  let Moltin = moltin.gateway({
-    client_id,
+  let Moltin = MoltinGateway({
+    client_id: "S0xpD0ORVe1ZXgwfXIENg3Max12bI6EwLhpRIKCyfK",
     client_secret: "qpFZui08ykS5nH1EhcZql8Ok8u5pQkLWcMFa5ChIGb"
   });
   Moltin.Authenticate().then(() => {

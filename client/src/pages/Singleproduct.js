@@ -5,9 +5,35 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 
 export default class Singleproduct extends Component {
+  constructor(props) {
+    super(props);
 
-  componentDidMount(){
-    axios.get("/v2/products/" + )
+    this.state = {
+      productId: "",
+      productName: "",
+      productDescription: "",
+      productStock: "",
+      productPrice: ""
+    };
+  }
+
+  componentDidMount() {
+    console.log(window.location.pathname.split("/")[2]);
+    axios
+      .get("/v2/products/" + window.location.pathname.split("/")[2])
+      .then(res => {
+        const product = res.data.data;
+        console.log(product);
+
+        this.setState({
+          productId: product.id,
+          productName: product.name,
+          productDescription: product.description,
+          productStock: product.stock,
+          productPrice: product.meta.display_price.with_tax.formatted
+        });
+        console.log(this.state);
+      });
   }
   render() {
     return (
@@ -25,24 +51,19 @@ export default class Singleproduct extends Component {
 
             <Col size="6">
               <div className="productInfo">
-                <div classname="productName">
-                  <h2>Lamp</h2>
+                <div className="productName">
+                  <h2>{this.state.productName}</h2>
                 </div>
                 <div className="productDescription">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </p>
+                  <p>{this.state.productDescription}</p>
                 </div>
-                <div className="stock">In Stock: Yes</div>
+                <div className="stock">
+                  <p>in Stock:</p>
+                  {this.state.productStock ? <p>Yes</p> : <p>No</p>}
+                </div>
 
                 <div className="productPrice">
-                  <del>
-                    <h4> usd $20.00</h4>
-                  </del>
-                  <h4>Your price: usd $10.00</h4>
+                  <h4>USD: {this.state.productPrice} </h4>
                 </div>
               </div>
               <hr />
