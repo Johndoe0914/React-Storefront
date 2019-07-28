@@ -4,6 +4,8 @@ import "./Singleproduct.css";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 
+import { GetProduct, AddCart } from "../moltin";
+
 export default class Singleproduct extends Component {
   constructor(props) {
     super(props);
@@ -18,23 +20,61 @@ export default class Singleproduct extends Component {
   }
 
   componentDidMount() {
-    console.log(window.location.pathname.split("/")[2]);
-    axios
-      .get("/v2/products/" + window.location.pathname.split("/")[2])
-      .then(res => {
-        const product = res.data.data;
-        console.log(product);
+    // axios
+    //   .get("/v2/products/" + window.location.pathname.split("/")[2])
+    //   .then(res => {
+    //     const product = res.data.data;
+    //     console.log(product);
+    //     this.setState({
+    //       productId: product.id,
+    //       productName: product.name,
+    //       productDescription: product.description,
+    //       productStock: product.stock,
+    //       productPrice: product.meta.display_price.with_tax.formatted
+    //     });
+    //     console.log(this.state);
+    //   });
 
+    GetProduct(window.location.pathname.split("/")[2])
+      .then(res => {
+        // console.log(res);
+        const product = res.data;
+        console.log(product);
         this.setState({
           productId: product.id,
           productName: product.name,
           productDescription: product.description,
-          productStock: product.stock,
+          productStock: product.meta.stock.availability,
           productPrice: product.meta.display_price.with_tax.formatted
         });
         console.log(this.state);
+      })
+      .catch(err => {
+        console.log(err);
       });
   }
+
+  handleAddToCart = (productId, quantity) => {
+    console.log(productId, quantity);
+
+    AddCart(productId, quantity)
+      .then(res => {
+        console.log("items added", res);
+        alert("item added");
+        document.location.reload();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    //   axios
+    //     .post("/v2/carts/1000/items", (productId, quantity))
+    //     .then(res => {
+    //       console.log(res);
+    //     })
+    //     .catch(err => {
+    //       console.log(err);
+    //     });
+  };
   render() {
     return (
       <Container fluid>
@@ -62,8 +102,11 @@ export default class Singleproduct extends Component {
                   ) : null}
                 </div>
                 <div className="stock">
-                  {this.state.productStock ? <p>in Stock:</p> : null}
-                  {this.state.productStock ? <p>Yes</p> : null}
+                  {this.state.productStock ? (
+                    <p>{this.state.productStock}</p>
+                  ) : (
+                    <p>out of stock</p>
+                  )}
                 </div>
 
                 <div className="productPrice">
@@ -73,7 +116,12 @@ export default class Singleproduct extends Component {
                 </div>
               </div>
               <hr />
-              <Button variant="danger">Add To Cart</Button>
+              <Button
+                onClick={() => this.handleAddToCart(this.state.productId, 1)}
+                variant="danger"
+              >
+                Add To Cart
+              </Button>
             </Col>
           </Row>
         </div>

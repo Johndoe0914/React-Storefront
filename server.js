@@ -32,6 +32,7 @@ const PORT = 5000;
 // tell express to use the auth function as middleware on every    // route
 app.use(authenticateMoltin);
 require("./routes/api/products")(app);
+// require("./routes/api/cart")(app);
 
 /*---------------Routes-----------------*/
 // app.get("/moltin", (req, res) => {
