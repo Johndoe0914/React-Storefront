@@ -1,19 +1,16 @@
 .cart {
   position: relative;
   height: auto;
-  width: 100%;
+
   margin: auto;
+  margin-top: 150px;
 }
 .cartContainer {
   position: relative;
   height: auto;
-  width: 900px;
+  width: 650px;
   margin: auto;
-  margin-top: 200px;
+
   margin-bottom: 250px;
   background-color: white;
-}
-
-.cartProduct > {
-  display: inline;
 }

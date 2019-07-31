@@ -10,7 +10,12 @@ nav {
 .nav-item {
   position: relative;
   display: inline-block;
+  color: black;
   left: 700px;
   padding: 10px;
   font-size: 20px;
+}
+.nav-item :active {
+  border-style: double;
+  border-color: red;
 }

@@ -24,7 +24,7 @@ export default class card extends Component {
         </div>
 
         <div className="productInfo">
-          <p>
+          <p style={{ color:"black"}}>
             {this.props.productName}
             <br />${this.props.productPrice}
           </p>

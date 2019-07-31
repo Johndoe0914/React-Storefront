@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
+import "./style.css";
 
 export default class cartCard extends Component {
   constructor(props) {
@@ -15,17 +16,25 @@ export default class cartCard extends Component {
             <div className="cartProductName">
               <h3>{this.props.productName}</h3>
             </div>
+            <Button
+              style={{ display: "inline" }}
+              variant="success"
+              onClick={this.props.decrement}
+            >
+              -
+            </Button>
             <div className="cartProductQuantity">
               <p>{this.props.productQuantity}</p>
             </div>
+            <Button
+              style={{ display: "inline" }}
+              variant="success"
+              onClick={this.props.increment}
+            >
+              +
+            </Button>
             <div className="cartproductQuantityPrice">
-              <Button variant="success" onClick={this.props.decrement}>
-                -
-              </Button>{" "}
-              <p>{this.props.quantityPrice}></p>{" "}
-              <Button variant="success" onClick={this.props.increment}>
-                +
-              </Button>
+              <p>{this.props.quantityPrice}</p>{" "}
             </div>
           </div>
         </div>

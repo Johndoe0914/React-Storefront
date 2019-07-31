@@ -30,7 +30,7 @@ export default class Navbar extends Component {
         style={{
           boxShadow: "0 3px 6px darkslategrey, 0 3px 6px darkslategrey"
         }}
-        className="navbar navbar-expand-lg navbar-dark bg-transparent"
+        className="navbar navbar-expand-lg navbar-dark bg-dark"
       >
         <Link className="navbar-brand" to="/">
           LukeWarm

@@ -6,11 +6,12 @@
   margin: auto;
   margin-top: 200px;
   overflow-x: hidden;
+  color: black;
 }
 
 .productInfo {
   position: relative;
-  color: white;
+  color: black;
 }
 .productDescription {
   font-weight: bold;

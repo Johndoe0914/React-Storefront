@@ -3,7 +3,10 @@ import { Container, Row, Col } from "../components/Grid/index";
 import axios from "axios";
 import CartCard from "../components/CartCard/index";
 import { GetCartItems, UpdateCartMinus, UpdateCartPlus } from "../moltin";
+import Button from "react-bootstrap/Button";
+import Table from "react-bootstrap/Table";
 import "./Cart.css";
+import { copyFile } from "fs";
 
 export default class Cart extends Component {
   constructor(props) {
@@ -11,7 +14,7 @@ export default class Cart extends Component {
 
     this.state = {
       cartProducts: [{}],
-      totalPrice: 200
+      totalPrice: "total price"
     };
   }
 
@@ -29,8 +32,11 @@ export default class Cart extends Component {
 
     GetCartItems()
       .then(res => {
-        this.setState({ cartProducts: res.data });
-        console.log("cart items", res);
+        console.log("Cartitemsforprice");
+        this.setState({
+          cartProducts: res.data,
+          totalPrice: res.meta.display_price.with_tax.formatted
+        });
       })
       .catch(err => {
         console.log(err);
@@ -39,13 +45,31 @@ export default class Cart extends Component {
 
   handleProductdecrement = (productid, quantity) => {
     UpdateCartMinus(productid, quantity).then(res => {
-      document.location.reload();
+      GetCartItems()
+        .then(res => {
+          this.setState({
+            cartProducts: res.data,
+            totalPrice: res.meta.display_price.with_tax.formatted
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
     });
   };
 
   handleProductincrement = (productid, quantity) => {
     UpdateCartPlus(productid, quantity).then(res => {
-      document.location.reload();
+      GetCartItems()
+        .then(res => {
+          this.setState({
+            cartProducts: res.data,
+            totalPrice: res.meta.display_price.with_tax.formatted
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
     });
   };
   render() {
@@ -53,32 +77,70 @@ export default class Cart extends Component {
       <div className="window">
         <Container fluid>
           <Row>
-            <Col size="sm-12 md-6 lg-12">
+            <Col size="sm-4 md-6 lg-12">
               <div className="cart">
-                <h1>Your Cart Items</h1>
+                <center>
+                  {" "}
+                  <h1>Your Cart Items</h1>
+                </center>
               </div>
+              <br />
             </Col>
           </Row>
           <Row>
             <Col size="sm-4 md-6 lg-12">
               <div className="cartContainer">
-                {this.state.cartProducts.map(product => (
-                  <CartCard
-                    productName={product.name}
-                    productQuantity={product.quantity}
-                    decrement={() => {
-                      this.handleProductdecrement(product.id, 1);
-                    }}
-                    increment={() => {
-                      this.handleProductincrement(product.id, 1);
-                    }}
-                    quantityPrice={product.price}
-                  />
-                ))}
+                <Table responsive="md">
+                  <thead>
+                    <th>Item name</th>
+                    <th>Item quantity</th>
+                    <th>Item image</th>
+                  </thead>
+                  {this.state.cartProducts.map(product => (
+                    <div>
+                      <tbody>
+                        <tr>
+                          <td>{product.name}</td>
+                          <td>
+                            <Button
+                              onClick={() => {
+                                this.handleProductdecrement(
+                                  product.id,
+                                  product.quantity
+                                );
+                              }}
+                            >
+                              -
+                            </Button>
+                            {product.quantity}
+                            <Button
+                              onClick={() => {
+                                this.handleProductincrement(
+                                  product.id,
+                                  product.quantity
+                                );
+                              }}
+                            >
+                              +
+                            </Button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </div>
+                  ))}
 
-                <div className="totalPrice">
-                  <h2>{this.state.totalPrice}</h2>
-                </div>
+                  <br />
+                  <br />
+                  <div className="totalPrice">
+                    <h2>
+                      Total Price: <hr />
+                      {this.state.totalPrice}
+                    </h2>
+                  </div>
+                  <Button href={"/checkout"} variant="danger">
+                    Checkout ->
+                  </Button>
+                </Table>
               </div>
             </Col>
           </Row>

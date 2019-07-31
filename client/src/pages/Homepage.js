@@ -82,7 +82,7 @@ export default class Homepage extends Component {
         </div>
         <hr />
         <center>
-          <h3 style={{ color: "white" }}>Trending Items</h3>
+          <h3 style={{ color: "black" }}>Trending Items</h3>
         </center>
         <hr />
         <div className="">
